@@ -100,4 +100,10 @@ public class StringCalculatorUnit {
         Assert.assertEquals(2, output);
     }
 
+    @Test
+    public void testAddCanTakeDelimeterOfAnyLength() throws Exception {
+        int output = stringCalculator.Add("//[***]\\n1***2***3”");
+        Assert.assertEquals(6, output);
+    }
+
 }
