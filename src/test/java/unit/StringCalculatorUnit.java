@@ -22,7 +22,7 @@ public class StringCalculatorUnit {
         Assert.assertEquals(output, 11);
     }
 
-    @Test(expected = NumberFormatException.class)
+    @Test(expected = StringCalculator.InvalidOutputException.class)
     public void testAddForNonNumericString() throws StringCalculator.InvalidOutputException {
         stringCalculator.Add("test string");
     }
@@ -109,9 +109,15 @@ public class StringCalculatorUnit {
     }
 
     @Test(expected = StringCalculator.InvalidOutputException.class)
-    public void shouldThrowExceptionInvalidOutputPassedToAdd2() throws Exception {
+    public void shouldThrowExceptionInvalidOutputPassedToAdd() throws Exception {
 
-        stringCalculator.Add("//;\n1,-4");
+        stringCalculator.Add("//;\n1,4");
+    }
+
+    @Test(expected = StringCalculator.InvalidOutputException.class)
+    public void shouldThrowExceptionInvalidOutputPassedToAdd1() throws Exception {
+
+        stringCalculator.Add("//;\n1;4,2");
     }
 
 }
