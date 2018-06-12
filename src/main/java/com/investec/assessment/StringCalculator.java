@@ -8,13 +8,9 @@ public class StringCalculator {
 
 
     public int Add(String input) throws InvalidOutputException {
+        List<String> numbers = new ArrayList<>();
         try {
-            List<String> numbers = new ArrayList<>();
             numbers.addAll(Arrays.asList(input.split(",")));
-
-            if (numbers.size() > 2) {
-                throw new InvalidOutputException("Too many numbers in input");
-            }
             return addAllListElements(numbers);
         }catch(NullPointerException e){
             throw new InvalidOutputException("Can not add null");

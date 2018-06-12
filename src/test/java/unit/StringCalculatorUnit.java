@@ -34,9 +34,13 @@ public class StringCalculatorUnit {
         Assert.assertEquals(3, output);
     }
 
-    @Test (expected = StringCalculator.InvalidOutputException.class)
-    public void testThatCalculatorAcceptsMaxTwoNumbers() throws StringCalculator.InvalidOutputException {
+    @Test
+    public void testThatCalculatorAcceptsAnyAmountOfNumbers() throws StringCalculator.InvalidOutputException {
         int output = stringCalculator.Add("1,2,3");
+        Assert.assertEquals(6, output);
+
+        output = stringCalculator.Add("1,2,3,4,5,6");
+        Assert.assertEquals(21, output);
     }
 
     @Test (expected = StringCalculator.InvalidOutputException.class)
