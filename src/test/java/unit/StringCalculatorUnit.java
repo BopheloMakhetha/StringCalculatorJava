@@ -59,5 +59,8 @@ public class StringCalculatorUnit {
     public void testAddForNewlineAndCommaDelimitedInput() throws StringCalculator.InvalidOutputException {
         int output = stringCalculator.Add("1\n2,3\n4");
         Assert.assertEquals(10, output);
+
+        output = stringCalculator.Add("1\n2,3");
+        Assert.assertEquals(6,output);
     }
 }
