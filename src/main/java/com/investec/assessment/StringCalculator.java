@@ -23,7 +23,7 @@ public class StringCalculator {
         int output = 0;
         int addend;
         for(String number: numbers){
-            if(number.isEmpty()){
+            if(number.isEmpty() || Integer.parseInt(number)>1000){
                 continue;
             }
             addend = Integer.parseInt(number);

@@ -104,7 +104,7 @@ public class StringCalculatorUnit {
 
     @Test
     public void ignoreNumbersBiggerThanThousand() throws  Exception {
-        int output = stringCalculator.Add("1,2,1000");
+        int output = stringCalculator.Add("1,2,1001");
         Assert.assertEquals(3, output);
     }
 }
