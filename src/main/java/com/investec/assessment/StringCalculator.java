@@ -8,23 +8,25 @@ public class StringCalculator {
 
 
     public int Add(String input) throws InvalidOutputException {
-        List<String> numbers;
-        if(input.isEmpty()){
-            return 0;
-        }
-        numbers = new ArrayList<>();
-        numbers.addAll(Arrays.asList(input.split(",")));
+        try {
+            List<String> numbers = new ArrayList<>();
+            numbers.addAll(Arrays.asList(input.split(",")));
 
-        if(numbers.size() > 2){
-            throw new InvalidOutputException("Too many numbers in input");
-
+            if (numbers.size() > 2) {
+                throw new InvalidOutputException("Too many numbers in input");
+            }
+            return addAllListElements(numbers);
+        }catch(NullPointerException e){
+            throw new InvalidOutputException("Can not add null");
         }
-        return addAllListElements(numbers);
     }
 
     private int addAllListElements(List<String> numbers){
         int output = 0;
         for(String number: numbers){
+            if(number.isEmpty()){
+                continue;
+            }
             output += Integer.parseInt(number);
         }
         return output;

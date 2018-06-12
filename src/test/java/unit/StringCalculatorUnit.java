@@ -38,4 +38,10 @@ public class StringCalculatorUnit {
     public void testThatCalculatorAcceptsMaxTwoNumbers() throws StringCalculator.InvalidOutputException {
         int output = stringCalculator.Add("1,2,3");
     }
+
+    @Test (expected = StringCalculator.InvalidOutputException.class)
+    public void testThatCalculatorDoesNotBreakWhenNullStringPassedIn() throws StringCalculator.InvalidOutputException {
+        int output = stringCalculator.Add(null);
+
+    }
 }
