@@ -6,11 +6,10 @@ import java.util.List;
 
 public class StringCalculator {
 
-
     public int Add(String input) throws InvalidOutputException {
         List<String> numbers = new ArrayList<>();
         try {
-            numbers.addAll(Arrays.asList(input.split(",")));
+            numbers.addAll(Arrays.asList(input.split("[,\n]")));
             return addAllListElements(numbers);
         }catch(NullPointerException e){
             throw new InvalidOutputException("Can not add null");

@@ -22,7 +22,7 @@ public class StringCalculatorUnit {
 
     @Test(expected = NumberFormatException.class)
     public void testAddForNonNumericString() throws StringCalculator.InvalidOutputException {
-        int output = stringCalculator.Add("test string");
+        stringCalculator.Add("test string");
     }
 
     @Test
@@ -45,7 +45,19 @@ public class StringCalculatorUnit {
 
     @Test (expected = StringCalculator.InvalidOutputException.class)
     public void testThatCalculatorDoesNotBreakWhenNullStringPassedIn() throws StringCalculator.InvalidOutputException {
-        int output = stringCalculator.Add(null);
+        stringCalculator.Add(null);
 
+    }
+
+    @Test
+    public void testAddForNewlineDelimitedInput() throws StringCalculator.InvalidOutputException {
+        int output = stringCalculator.Add("1\n2\n3");
+        Assert.assertEquals(6, output);
+    }
+
+    @Test
+    public void testAddForNewlineAndCommaDelimitedInput() throws StringCalculator.InvalidOutputException {
+        int output = stringCalculator.Add("1\n2,3\n4");
+        Assert.assertEquals(10, output);
     }
 }
