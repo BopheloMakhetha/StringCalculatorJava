@@ -107,4 +107,11 @@ public class StringCalculatorUnit {
         int output = stringCalculator.Add("1,2,1001");
         Assert.assertEquals(3, output);
     }
+
+    @Test(expected = StringCalculator.InvalidOutputException.class)
+    public void shouldThrowExceptionInvalidOutputPassedToAdd2() throws Exception {
+
+        stringCalculator.Add("//;\n1,-4");
+    }
+
 }

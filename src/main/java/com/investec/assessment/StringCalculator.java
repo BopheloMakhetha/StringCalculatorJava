@@ -23,14 +23,18 @@ public class StringCalculator {
         int output = 0;
         int addend;
         for(String number: numbers){
-            if(number.isEmpty() || Integer.parseInt(number)>1000){
-                continue;
+            try {
+                if (number.isEmpty() || Integer.parseInt(number) > 1000) {
+                    continue;
+                }
+                addend = Integer.parseInt(number);
+                if (addend < 0) {
+                    throw new InvalidOutputException("Negatives not allowed: " + addend);
+                }
+                output += addend;
+            }catch(NumberFormatException e){
+                throw new InvalidOutputException("Input not supported");
             }
-            addend = Integer.parseInt(number);
-            if(addend < 0){
-                throw new InvalidOutputException("Negatives not allowed: "+addend);
-            }
-            output += addend;
         }
         return output;
     }
