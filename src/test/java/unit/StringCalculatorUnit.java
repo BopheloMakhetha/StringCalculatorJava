@@ -102,8 +102,11 @@ public class StringCalculatorUnit {
 
     @Test
     public void testAddCanTakeDelimeterOfAnyLength() throws Exception {
-        int output = stringCalculator.Add("//[***]\\n1***2***3”");
+        int output = stringCalculator.Add("//[***]\n1***2***3");
         Assert.assertEquals(6, output);
+
+        output = stringCalculator.Add("//[*****]\n2*****2*****3");
+        Assert.assertEquals(7, output);
     }
 
 }

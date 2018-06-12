@@ -33,9 +33,10 @@ public class StringCalculator {
     }
 
     private String getDelimiterAndFormatInput(String input) {
-        if (input.startsWith("//") && input.substring(3).startsWith("\n")) {
-            delimiter = input.substring(2, 3);
-            input = input.substring(4);
+        if (input.startsWith("//")){
+            int index = input.indexOf("\n");
+            delimiter = input.substring(2, index);
+            input = input.substring(index+1);
         } else {
             delimiter = "[,\n]";
         }
