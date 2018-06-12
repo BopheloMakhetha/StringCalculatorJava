@@ -2,7 +2,11 @@ package com.investec.assessment;
 
 public class StringCalculator {
 
+
     public int Add(String input){
-        return 0;
+        if(input.isEmpty()){
+            return 0;
+        }
+        return Integer.parseInt(input);
     }
 }

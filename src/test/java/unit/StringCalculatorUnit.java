@@ -13,4 +13,10 @@ public class StringCalculatorUnit {
         int output = stringCalculator.Add("");
         Assert.assertEquals(output, 0);
     }
+
+    @Test
+    public void testAddForSingleNumber(){
+        int output = stringCalculator.Add("11");
+        Assert.assertEquals(output, 11);
+    }
 }
