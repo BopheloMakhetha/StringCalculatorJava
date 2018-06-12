@@ -101,4 +101,10 @@ public class StringCalculatorUnit {
 
         stringCalculator.Add("//;\n1;-4");
     }
+
+    @Test
+    public void ignoreNumbersBiggerThanThousand() throws  Exception {
+        int output = stringCalculator.Add("1,2,1000");
+        Assert.assertEquals(3, output);
+    }
 }
