@@ -22,11 +22,6 @@ public class StringCalculatorUnit {
         Assert.assertEquals(output, 11);
     }
 
-    @Test(expected = StringCalculator.InvalidOutputException.class)
-    public void testAddForNonNumericString() throws StringCalculator.InvalidOutputException {
-        stringCalculator.Add("test string");
-    }
-
     @Test
     public void testAddForTwoCommaDelimitedNumbersInAString() throws StringCalculator.InvalidOutputException {
         int output = stringCalculator.Add("1,2");
@@ -43,12 +38,6 @@ public class StringCalculatorUnit {
 
         output = stringCalculator.Add("1,2,3,4,5,6");
         Assert.assertEquals(21, output);
-    }
-
-    @Test (expected = StringCalculator.InvalidOutputException.class)
-    public void testThatCalculatorDoesNotBreakWhenNullStringPassedIn() throws StringCalculator.InvalidOutputException {
-        stringCalculator.Add(null);
-
     }
 
     @Test
@@ -106,18 +95,9 @@ public class StringCalculatorUnit {
     public void ignoreNumbersBiggerThanThousand() throws  Exception {
         int output = stringCalculator.Add("1,2,1001");
         Assert.assertEquals(3, output);
-    }
 
-    @Test(expected = StringCalculator.InvalidOutputException.class)
-    public void shouldThrowExceptionInvalidOutputPassedToAdd() throws Exception {
-
-        stringCalculator.Add("//;\n1,4");
-    }
-
-    @Test(expected = StringCalculator.InvalidOutputException.class)
-    public void shouldThrowExceptionInvalidOutputPassedToAdd1() throws Exception {
-
-        stringCalculator.Add("//;\n1;4,2");
+        output = stringCalculator.Add("2,1001");
+        Assert.assertEquals(2, output);
     }
 
 }
