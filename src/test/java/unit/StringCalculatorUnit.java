@@ -63,4 +63,10 @@ public class StringCalculatorUnit {
         output = stringCalculator.Add("1\n2,3");
         Assert.assertEquals(6,output);
     }
+
+    @Test
+    public void testChangingDelimeter() throws StringCalculator.InvalidOutputException {
+        int output = stringCalculator.Add("//;\n1;2");
+        Assert.assertEquals(3, output);
+    }
 }
