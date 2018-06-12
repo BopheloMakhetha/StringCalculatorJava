@@ -19,19 +19,24 @@ public class StringCalculator {
         }
     }
 
-    private int addAllListElements(List<String> numbers){
+    private int addAllListElements(List<String> numbers) throws InvalidOutputException {
         int output = 0;
+        int addend;
         for(String number: numbers){
             if(number.isEmpty()){
                 continue;
             }
-            output += Integer.parseInt(number);
+            addend = Integer.parseInt(number);
+            if(addend < 0){
+                throw new InvalidOutputException("Negatives not allowed: "+addend);
+            }
+            output += addend;
         }
         return output;
     }
 
     private String getDelimiterAndFormatInput(String input){
-        if(input.indexOf("//") == 0 && input.indexOf("\n") == 3){
+        if(input.startsWith("//") && input.substring(3).startsWith("\n")){
             delimiter = input.substring(2,3);
             input = input.substring(4);
         }else {

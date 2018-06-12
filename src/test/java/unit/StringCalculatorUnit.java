@@ -81,7 +81,7 @@ public class StringCalculatorUnit {
     @Test
     public void shouldThrowExceptionWhenNegativeNumbersPassedToAdd() throws Exception {
         expectedException.expect(StringCalculator.InvalidOutputException.class);
-        expectedException.expectMessage("Negatives not allowed: -2 ");
+        expectedException.expectMessage("Negatives not allowed: -2");
 
         stringCalculator.Add("1,-2");
     }
