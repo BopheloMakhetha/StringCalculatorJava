@@ -1,8 +1,10 @@
 package unit;
 
 import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
 import com.investec.assessment.StringCalculator;
+import org.junit.rules.ExpectedException;
 
 public class StringCalculatorUnit {
 
@@ -71,5 +73,16 @@ public class StringCalculatorUnit {
 
         output = stringCalculator.Add("//%\n1%2%6%7");
         Assert.assertEquals(16, output);
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void shouldThrowExceptionWhenNegativeNumbersPassedToAdd() throws Exception {
+        expectedException.expect(StringCalculator.InvalidOutputException.class);
+        expectedException.expectMessage("Negatives not allowed: -2 ");
+
+        stringCalculator.Add("1,-2");
     }
 }
