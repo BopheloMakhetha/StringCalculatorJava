@@ -68,5 +68,8 @@ public class StringCalculatorUnit {
     public void testChangingDelimeter() throws StringCalculator.InvalidOutputException {
         int output = stringCalculator.Add("//;\n1;2");
         Assert.assertEquals(3, output);
+
+        output = stringCalculator.Add("//%\n1%2%6%7");
+        Assert.assertEquals(16, output);
     }
 }
