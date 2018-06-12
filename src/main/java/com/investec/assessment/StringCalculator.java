@@ -8,8 +8,9 @@ public class StringCalculator {
 
     public int Add(String input) throws InvalidOutputException {
         List<String> numbers = new ArrayList<>();
+        String delimeter = getDelimiter(input);
         try {
-            numbers.addAll(Arrays.asList(input.split("[,\n]")));
+            numbers.addAll(Arrays.asList(input.split(delimeter)));
             return addAllListElements(numbers);
         }catch(NullPointerException e){
             throw new InvalidOutputException("Can not add null");
@@ -25,6 +26,10 @@ public class StringCalculator {
             output += Integer.parseInt(number);
         }
         return output;
+    }
+
+    private String getDelimiter(String input){
+        return "[,\n]";
     }
 
     public class InvalidOutputException extends Exception {
