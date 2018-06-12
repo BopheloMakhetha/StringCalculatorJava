@@ -11,19 +11,19 @@ public class StringCalculatorUnit {
     private StringCalculator stringCalculator = new StringCalculator();
 
     @Test
-    public void testAddForEmptyString() throws StringCalculator.InvalidOutputException {
+    public void testAddForEmptyString() throws StringCalculator.InvalidInputException {
         int output = stringCalculator.Add("");
         Assert.assertEquals(output, 0);
     }
 
     @Test
-    public void testAddForSingleNumber() throws StringCalculator.InvalidOutputException {
+    public void testAddForSingleNumber() throws StringCalculator.InvalidInputException {
         int output = stringCalculator.Add("11");
         Assert.assertEquals(output, 11);
     }
 
     @Test
-    public void testAddForTwoCommaDelimitedNumbersInAString() throws StringCalculator.InvalidOutputException {
+    public void testAddForTwoCommaDelimitedNumbersInAString() throws StringCalculator.InvalidInputException {
         int output = stringCalculator.Add("1,2");
         Assert.assertEquals(3, output);
 
@@ -32,7 +32,7 @@ public class StringCalculatorUnit {
     }
 
     @Test
-    public void testThatCalculatorAcceptsAnyAmountOfNumbers() throws StringCalculator.InvalidOutputException {
+    public void testThatCalculatorAcceptsAnyAmountOfNumbers() throws StringCalculator.InvalidInputException {
         int output = stringCalculator.Add("1,2,3");
         Assert.assertEquals(6, output);
 
@@ -41,13 +41,13 @@ public class StringCalculatorUnit {
     }
 
     @Test
-    public void testAddForNewlineDelimitedInput() throws StringCalculator.InvalidOutputException {
+    public void testAddForNewlineDelimitedInput() throws StringCalculator.InvalidInputException {
         int output = stringCalculator.Add("1\n2\n3");
         Assert.assertEquals(6, output);
     }
 
     @Test
-    public void testAddForNewlineAndCommaDelimitedInput() throws StringCalculator.InvalidOutputException {
+    public void testAddForNewlineAndCommaDelimitedInput() throws StringCalculator.InvalidInputException {
         int output = stringCalculator.Add("1\n2,3\n4");
         Assert.assertEquals(10, output);
 
@@ -56,7 +56,7 @@ public class StringCalculatorUnit {
     }
 
     @Test
-    public void testChangingDelimeter() throws StringCalculator.InvalidOutputException {
+    public void testChangingDelimeter() throws StringCalculator.InvalidInputException {
         int output = stringCalculator.Add("//;\n1;2");
         Assert.assertEquals(3, output);
 
@@ -69,7 +69,7 @@ public class StringCalculatorUnit {
 
     @Test
     public void shouldThrowExceptionWhenNegativeNumbersPassedToAdd() throws Exception {
-        expectedException.expect(StringCalculator.InvalidOutputException.class);
+        expectedException.expect(StringCalculator.InvalidInputException.class);
         expectedException.expectMessage("Negatives not allowed: -4");
 
         stringCalculator.Add("1,-4");
@@ -77,7 +77,7 @@ public class StringCalculatorUnit {
 
     @Test
     public void shouldThrowExceptionWhenNegativeNumbersPassedToAdd1() throws Exception {
-        expectedException.expect(StringCalculator.InvalidOutputException.class);
+        expectedException.expect(StringCalculator.InvalidInputException.class);
         expectedException.expectMessage("Negatives not allowed: -4");
 
         stringCalculator.Add("1\n-4");
@@ -85,7 +85,7 @@ public class StringCalculatorUnit {
 
     @Test
     public void shouldThrowExceptionWhenNegativeNumbersPassedToAdd2() throws Exception {
-        expectedException.expect(StringCalculator.InvalidOutputException.class);
+        expectedException.expect(StringCalculator.InvalidInputException.class);
         expectedException.expectMessage("Negatives not allowed: -4");
 
         stringCalculator.Add("//;\n1;-4");

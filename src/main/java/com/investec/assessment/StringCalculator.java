@@ -8,15 +8,15 @@ public class StringCalculator {
 
     private String delimiter = "[,\n]";
 
-    public int Add(String input) throws InvalidOutputException {
+    public int Add(String input) throws InvalidInputException {
         List<String> numbers = new ArrayList<>();
 
-        input = getDelimiterAndFormatInput(input);
+        input = extractDelimiterAndInput(input);
         numbers.addAll(Arrays.asList(input.split(delimiter)));
         return addAllListElements(numbers);
     }
 
-    private int addAllListElements(List<String> numbers) throws InvalidOutputException {
+    private int addAllListElements(List<String> numbers) throws InvalidInputException {
         int output = 0;
         int addend;
         for (String number : numbers) {
@@ -25,14 +25,14 @@ public class StringCalculator {
             }
             addend = Integer.parseInt(number);
             if (addend < 0) {
-                throw new InvalidOutputException("Negatives not allowed: " + addend);
+                throw new InvalidInputException("Negatives not allowed: " + addend);
             }
             output += addend;
         }
         return output;
     }
 
-    private String getDelimiterAndFormatInput(String input) {
+    private String extractDelimiterAndInput(String input) {
         if (input.startsWith("//")){
             int index = input.indexOf("\n");
             delimiter = input.substring(2, index);
@@ -46,9 +46,9 @@ public class StringCalculator {
         return input;
     }
 
-    public class InvalidOutputException extends Exception {
+    public class InvalidInputException extends Exception {
 
-        public InvalidOutputException(String message) {
+        public InvalidInputException(String message) {
             super(message);
         }
     }
