@@ -36,6 +36,9 @@ public class StringCalculator {
         if (input.startsWith("//")){
             int index = input.indexOf("\n");
             delimiter = input.substring(2, index);
+            if(delimiter.split("]").length>1){
+                delimiter = "["+delimiter+"]";
+            }
             input = input.substring(index+1);
         } else {
             delimiter = "[,\n]";

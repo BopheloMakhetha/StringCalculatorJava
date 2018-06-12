@@ -109,4 +109,13 @@ public class StringCalculatorUnit {
         Assert.assertEquals(7, output);
     }
 
+    @Test
+    public void testAddCanTakeMultipleDelimeters() throws Exception {
+        int output = stringCalculator.Add("//[*][%]\n1*2%3");
+        Assert.assertEquals(6, output);
+
+        output = stringCalculator.Add("//[*][%][$]\n1*2%3$5");
+        Assert.assertEquals(11, output);
+
+    }
 }
